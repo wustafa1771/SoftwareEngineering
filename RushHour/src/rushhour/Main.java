@@ -66,7 +66,7 @@ public class Main extends JFrame implements Runnable
 	{
 		long lastTime = System.nanoTime();
 		final double amountOfFrames = 60.0;
-		double ns = 1000000000 / amountOfFrames;	// one bilion
+		double ns = 1000000000 / amountOfFrames;	// nanoseconds / 1.000.000.000 = seconds
 		double delta = 0;	//time passed
 		int updateCount = 0;
 		int frames = 0;
@@ -76,7 +76,12 @@ public class Main extends JFrame implements Runnable
 		{
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
+				// (now - lastTime) is the elapsed time since the method was entered
+				// elapsed time in seconds / 60.0.
+
 			lastTime = now;
+			
+			// call delta after 1/60 seconds
 			if(delta >= 1)
 			{
 				update();
@@ -86,10 +91,12 @@ public class Main extends JFrame implements Runnable
 			render();
 			frames++;
 			
+			// this is a timer
+			// prints something every second
 			if(System.currentTimeMillis() - timer > 1000)
 			{
 				timer += 1000;
-				System.out.println( updateCount + " Updates, FPS: " + frames );
+				System.out.println( updateCount + " Updates FPS: " + frames );
 				updateCount = 0;
 				frames = 0;
 				
