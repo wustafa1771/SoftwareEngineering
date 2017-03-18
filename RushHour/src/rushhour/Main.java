@@ -2,6 +2,7 @@ package rushhour;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -30,13 +31,16 @@ public class Main extends JFrame implements Runnable
 	JPanel mainPanel;
 	
 	/**
-	 * Initializes game
+	 * Initializes the game here
 	 */
 	private void init()
 	{
 
+		addKeyListener(new KeyInput(this));
 		
 		player = new Player(200, 300, this);
+		
+		
 		
 	}
 	
@@ -69,7 +73,7 @@ public class Main extends JFrame implements Runnable
 		}
 		catch (InterruptedException e)
 		{
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -156,6 +160,36 @@ public class Main extends JFrame implements Runnable
 		////image draw code end
 		g.dispose();
 		bufferStrategy.show();
+	}
+	
+	
+	
+	public void keyPressed(KeyEvent e)
+	{
+		int key = e.getKeyCode();
+		
+		if(key == KeyEvent.VK_RIGHT)
+		{
+			player.setxPlayer(player.getxPlayer() + 5);
+		}
+		else if(key == KeyEvent.VK_LEFT)
+		{
+			player.setxPlayer(player.getxPlayer() - 5);
+		}
+		else if(key == KeyEvent.VK_DOWN)
+		{
+			player.setyPlayer(player.getyPlayer() + 5);
+		}
+		else if(key == KeyEvent.VK_UP)
+		{
+			player.setyPlayer(player.getyPlayer() - 5);
+		}
+
+	}
+	
+	public void keyReleased(KeyEvent e)
+	{
+		
 	}
 	
 	public static void main(String[] args)

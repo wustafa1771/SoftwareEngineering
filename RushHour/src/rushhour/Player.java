@@ -41,7 +41,7 @@ public class Player {
 		}
 		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -49,9 +49,12 @@ public class Player {
 		
 	}
 
+	/**
+	 * Everything that player needs to update
+	 */
 	public void update()
 	{
-		
+
 		
 	}
 	
@@ -134,6 +137,22 @@ public class Player {
 
 	public void setWidth(int width) {
 		this.width = width;
+	}
+
+	public int getxPlayer() {
+		return xPlayer;
+	}
+
+	public void setxPlayer(int xPlayer) {
+		this.xPlayer = xPlayer;
+	}
+
+	public int getyPlayer() {
+		return yPlayer;
+	}
+
+	public void setyPlayer(int yPlayer) {
+		this.yPlayer = yPlayer;
 	}
 
 
