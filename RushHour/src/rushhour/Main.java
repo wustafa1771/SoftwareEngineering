@@ -4,7 +4,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -22,9 +24,27 @@ public class Main extends JFrame implements Runnable
 	private boolean running = false;
 	private Thread thread;
 	
-	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	// buffered image for the whole window
+	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);	// buffered image for the whole window
+	private BufferedImage hero;
+	
 	JPanel mainPanel;
+	
+	/**
+	 * Initializes game
+	 */
+	private void init()
+	{
+		try
+		{
+			hero = ImageIO.read(getClass().getResource("/hero.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	/**
 	 * Starts the game
@@ -69,6 +89,7 @@ public class Main extends JFrame implements Runnable
 	@Override
 	public void run()
 	{
+		init();
 		long lastTime = System.nanoTime();
 		final double amountOfFrames = 60.0;
 		double ns = 1000000000 / amountOfFrames;	// nanoseconds / 1.000.000.000 = seconds
@@ -136,6 +157,8 @@ public class Main extends JFrame implements Runnable
 		////image draw code start
 		
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+		g.drawImage(hero, 100, 100, this);
+		
 		
 		////image draw code end
 		g.dispose();
