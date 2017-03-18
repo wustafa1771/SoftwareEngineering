@@ -1,6 +1,9 @@
 package rushhour;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,6 +22,8 @@ public class Main extends JFrame implements Runnable
 	private boolean running = false;
 	private Thread thread;
 	
+	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	// buffered image for the whole window
 	JPanel mainPanel;
 	
 	/**
@@ -121,8 +126,20 @@ public class Main extends JFrame implements Runnable
 	 */
 	private void render()
 	{
+		BufferStrategy bufferStrategy =this.getBufferStrategy();
+		if(bufferStrategy == null)
+		{
+			createBufferStrategy(3);	// creates three frames back to back. (triple buffering)
+			return;
+		}
+		Graphics g = bufferStrategy.getDrawGraphics();
+		////image draw code start
 		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 		
+		////image draw code end
+		g.dispose();
+		bufferStrategy.show();
 	}
 	
 	public static void main(String[] args)
