@@ -18,6 +18,30 @@ public class Player {
 	int weaponType;
 	int speed;
 	int[] powerups;
+	int height,width;
+	
+	private int xPlayer;
+	private int yPlayer;
+
+	public Player(int x, int y)
+	{
+		this.xPlayer = x;
+		this.yPlayer = y;
+		
+		
+	}
+
+	public void update()
+	{
+		
+		
+	}
+	
+	public void render()
+	{
+		
+		
+	}
 	
 	
 	public String getName() {
@@ -90,7 +114,5 @@ public class Player {
 	}
 
 
-	int height,width;
-	
 	
 }
