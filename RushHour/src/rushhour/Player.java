@@ -8,6 +8,12 @@ Purpose: Player Class For Our Game
 
 package rushhour;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class Player {
 	
 	String name;
@@ -20,13 +26,25 @@ public class Player {
 	int[] powerups;
 	int height,width;
 	
-	private int xPlayer;
-	private int yPlayer;
+	private int xPlayer;	// x coordinate of player sprite
+	private int yPlayer;	// y coordinate of player sprite
+	private BufferedImage hero;
 
-	public Player(int x, int y)
+	public Player(int x, int y, Main game)
 	{
 		this.xPlayer = x;
 		this.yPlayer = y;
+		
+		try
+		{
+			hero = ImageIO.read(getClass().getResource("/hero.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		
 	}
@@ -37,8 +55,13 @@ public class Player {
 		
 	}
 	
-	public void render()
+	/**
+	 * Render graphics of player 
+	 * @param g is the instance of graphics class that helps us draw graphics. g comes from the main game class
+	 */
+	public void render(Graphics g)
 	{
+		g.drawImage(hero, xPlayer, yPlayer, null);
 		
 		
 	}

@@ -25,7 +25,7 @@ public class Main extends JFrame implements Runnable
 	private Thread thread;
 	
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);	// buffered image for the whole window
-	private BufferedImage hero;
+	private Player player;
 	
 	JPanel mainPanel;
 	
@@ -34,15 +34,9 @@ public class Main extends JFrame implements Runnable
 	 */
 	private void init()
 	{
-		try
-		{
-			hero = ImageIO.read(getClass().getResource("/hero.png"));
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		
+		player = new Player(200, 300, this);
 		
 	}
 	
@@ -138,7 +132,7 @@ public class Main extends JFrame implements Runnable
 	 */
 	private void update()
 	{
-		
+		player.update();
 		
 	}
 
@@ -147,7 +141,7 @@ public class Main extends JFrame implements Runnable
 	 */
 	private void render()
 	{
-		BufferStrategy bufferStrategy =this.getBufferStrategy();
+		BufferStrategy bufferStrategy = this.getBufferStrategy();
 		if(bufferStrategy == null)
 		{
 			createBufferStrategy(3);	// creates three frames back to back. (triple buffering)
@@ -157,8 +151,7 @@ public class Main extends JFrame implements Runnable
 		////image draw code start
 		
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-		g.drawImage(hero, 100, 100, this);
-		
+		player.render(g);
 		
 		////image draw code end
 		g.dispose();
