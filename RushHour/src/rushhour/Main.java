@@ -64,14 +64,58 @@ public class Main extends JFrame implements Runnable
 	@Override
 	public void run()
 	{
+		long lastTime = System.nanoTime();
+		final double amountOfFrames = 60.0;
+		double ns = 1000000000 / amountOfFrames;	// one bilion
+		double delta = 0;	//time passed
+		int updateCount = 0;
+		int frames = 0;
+		long timer = System.currentTimeMillis();
+		
 		while(running)
 		{
+			long now = System.nanoTime();
+			delta += (now - lastTime) / ns;
+			lastTime = now;
+			if(delta >= 1)
+			{
+				update();
+				updateCount++;
+				delta--;
+			}
+			render();
+			frames++;
 			
-			System.out.println("Working");			
+			if(System.currentTimeMillis() - timer > 1000)
+			{
+				timer += 1000;
+				System.out.println( updateCount + " Updates, FPS: " + frames );
+				updateCount = 0;
+				frames = 0;
+				
+			}
 			
 			
 		}
-		stop();	//maybe?
+		stop();
+	}
+	
+	/**
+	 * Everything that game updates
+	 */
+	private void update()
+	{
+		
+		
+	}
+
+	/**
+	 * Everything that game renders
+	 */
+	private void render()
+	{
+		
+		
 	}
 	
 	public static void main(String[] args)
