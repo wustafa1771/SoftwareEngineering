@@ -13,7 +13,9 @@ public class KeyInput extends KeyAdapter
 		
 	}
 	
-	
+	/**
+	 * Relays key press  event to the main game class
+	 */
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
@@ -21,6 +23,9 @@ public class KeyInput extends KeyAdapter
 		
 	}
 	
+	/**
+	 * Relays key release event to the main game class
+	 */
 	@Override
 	public void keyReleased(KeyEvent e)
 	{

@@ -26,11 +26,16 @@ public class Player {
 	int[] powerups;
 	int height,width;
 	
-	private int xPlayer;	// x coordinate of player sprite
-	private int yPlayer;	// y coordinate of player sprite
+	private double xPlayer;	// x coordinate of player sprite
+	private double yPlayer;	// y coordinate of player sprite
+	
+	private double xVelocity;
+	private double yVelocity;
+	
+	
 	private BufferedImage hero;
 
-	public Player(int x, int y, Main game)
+	public Player(double x, double y, Main game)
 	{
 		this.xPlayer = x;
 		this.yPlayer = y;
@@ -54,7 +59,9 @@ public class Player {
 	 */
 	public void update()
 	{
-
+		//smoother controls
+		xPlayer += xVelocity;
+		yPlayer += yVelocity;
 		
 	}
 	
@@ -64,7 +71,7 @@ public class Player {
 	 */
 	public void render(Graphics g)
 	{
-		g.drawImage(hero, xPlayer, yPlayer, null);
+		g.drawImage(hero, (int)xPlayer, (int)yPlayer, null);
 		
 		
 	}
@@ -139,20 +146,36 @@ public class Player {
 		this.width = width;
 	}
 
-	public int getxPlayer() {
+	public double getxPlayer() {
 		return xPlayer;
 	}
 
-	public void setxPlayer(int xPlayer) {
+	public void setxPlayer(double xPlayer) {
 		this.xPlayer = xPlayer;
 	}
 
-	public int getyPlayer() {
+	public double getyPlayer() {
 		return yPlayer;
 	}
 
-	public void setyPlayer(int yPlayer) {
+	public void setyPlayer(double yPlayer) {
 		this.yPlayer = yPlayer;
+	}
+
+	public double getxVelocity() {
+		return xVelocity;
+	}
+
+	public void setxVelocity(double xVelocity) {
+		this.xVelocity = xVelocity;
+	}
+
+	public double getyVelocity() {
+		return yVelocity;
+	}
+
+	public void setyVelocity(double yVelocity) {
+		this.yVelocity = yVelocity;
 	}
 
 

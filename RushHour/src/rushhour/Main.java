@@ -163,33 +163,58 @@ public class Main extends JFrame implements Runnable
 	}
 	
 	
-	
+	/**
+	 * Gets a key press and makes other classes perform actions
+	 * @param e key event from KeyInput class
+	 */
 	public void keyPressed(KeyEvent e)
 	{
 		int key = e.getKeyCode();
 		
 		if(key == KeyEvent.VK_RIGHT)
 		{
-			player.setxPlayer(player.getxPlayer() + 5);
+			player.setxVelocity(5);
 		}
 		else if(key == KeyEvent.VK_LEFT)
 		{
-			player.setxPlayer(player.getxPlayer() - 5);
+			player.setxVelocity(-5);
 		}
 		else if(key == KeyEvent.VK_DOWN)
 		{
-			player.setyPlayer(player.getyPlayer() + 5);
+			player.setyVelocity(5);
 		}
 		else if(key == KeyEvent.VK_UP)
 		{
-			player.setyPlayer(player.getyPlayer() - 5);
+			player.setyVelocity(-5);
 		}
 
 	}
 	
+	/**
+	 * Gets a key release and makes other classes perform actions
+	 * @param e
+	 */
 	public void keyReleased(KeyEvent e)
 	{
+		int key = e.getKeyCode();
 		
+		if(key == KeyEvent.VK_RIGHT)
+		{
+			player.setxVelocity(0);
+		}
+		else if(key == KeyEvent.VK_LEFT)
+		{
+			player.setxVelocity(0);
+		}
+		else if(key == KeyEvent.VK_DOWN)
+		{
+			player.setyVelocity(0);
+		}
+		else if(key == KeyEvent.VK_UP)
+		{
+			player.setyVelocity(0);
+		}
+
 	}
 	
 	public static void main(String[] args)
