@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter
 {
 	Main game;
-	
+	//Classin adini main koymana izin veriyor mu ? 
 	public KeyInput(Main game)
 	{
 		this.game = game;
