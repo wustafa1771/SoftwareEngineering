@@ -1,18 +1,11 @@
 /**************************************************************************
-Developed by: Onur Berk Töre
+Developed by: Onur Berk Tore
 Purpose: Player Class For Our Game
 
 **************************************************************************/
 
+package RushHour;
 
-
-package rushhour;
-
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 public class Player {
 	
@@ -21,62 +14,32 @@ public class Player {
 	
 	int score;
 	int health;
-	int weaponType;
+	WeaponType weaponType;
+	int bulletCounter;
+	int simitCounter;
 	int speed;
-	int[] powerups;
+	int level;
+	powerUps[] powerups;
+	
 	int height,width;
 	
-	private double xPlayer;	// x coordinate of player sprite
-	private double yPlayer;	// y coordinate of player sprite
+	WeaponType PlayerSapan = new sapan();
 	
-	private double xVelocity;
-	private double yVelocity;
+	Player(int height, int width){
+		this.height = height;
+		this.width = width;
+		this.health = 100;
+		this.simitCounter = 2;
+		this.bulletCounter = 6;
+		this.weaponType = PlayerSapan;
+		this.speed = 1;
+		this.level = 1;
+		
+	}
 	
 	
-	private BufferedImage hero;
 
-	public Player(double x, double y, RushHour game)
-	{
-		this.xPlayer = x;
-		this.yPlayer = y;
 		
-		try
-		{
-			hero = ImageIO.read(getClass().getResource("/hero.png"));
-		}
-		catch (IOException e)
-		{
-			// Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-	}
-
-	/**
-	 * Everything that player needs to update
-	 */
-	public void update()
-	{
-		//smoother controls
-		xPlayer += xVelocity;
-		yPlayer += yVelocity;
-		
-	}
-	
-	/**
-	 * Render graphics of player 
-	 * @param g is the instance of graphics class that helps us draw graphics. g comes from the main game class
-	 */
-	public void render(Graphics g)
-	{
-		g.drawImage(hero, (int)xPlayer, (int)yPlayer, null);
-		
-		
-	}
-	
-	
 	public String getName() {
 		return name;
 	}
@@ -107,22 +70,22 @@ public class Player {
 	}
 
 
-	public int getWeaponType() {
+	public WeaponType getWeaponType() {
 		return weaponType;
 	}
 
 
-	public void setWeaponType(int weaponType) {
+	public void setWeaponType(WeaponType weaponType) {
 		this.weaponType = weaponType;
 	}
 
 
-	public int[] getPowerups() {
+	public powerUps[] getPowerups() {
 		return powerups;
 	}
 
 
-	public void setPowerups(int[] powerups) {
+	public void setPowerups(powerUps[] powerups) {
 		this.powerups = powerups;
 	}
 
@@ -145,39 +108,16 @@ public class Player {
 	public void setWidth(int width) {
 		this.width = width;
 	}
-
-	public double getxPlayer() {
-		return xPlayer;
+	
+	public void getDamage(int damage){
+		
+		this.health = health - damage;
 	}
-
-	public void setxPlayer(double xPlayer) {
-		this.xPlayer = xPlayer;
+	
+	public void getHealth(int health){
+		
+		this.health = health + health;
 	}
-
-	public double getyPlayer() {
-		return yPlayer;
-	}
-
-	public void setyPlayer(double yPlayer) {
-		this.yPlayer = yPlayer;
-	}
-
-	public double getxVelocity() {
-		return xVelocity;
-	}
-
-	public void setxVelocity(double xVelocity) {
-		this.xVelocity = xVelocity;
-	}
-
-	public double getyVelocity() {
-		return yVelocity;
-	}
-
-	public void setyVelocity(double yVelocity) {
-		this.yVelocity = yVelocity;
-	}
-
 
 	
 }
