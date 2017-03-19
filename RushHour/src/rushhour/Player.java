@@ -35,7 +35,7 @@ public class Player {
 	
 	private BufferedImage hero;
 
-	public Player(double x, double y, Main game)
+	public Player(double x, double y, RushHour game)
 	{
 		this.xPlayer = x;
 		this.yPlayer = y;

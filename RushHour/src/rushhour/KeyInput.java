@@ -5,11 +5,10 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter
 {
-	Main game;
-	//Onur ' dan egemene soru
-	//Classin adini main koymana izin veriyor mu ? 
-	//Public void static main(String Args[] ) ile constructor birbirine giriyor diye biliyordum ben
-	public KeyInput(Main game)
+	RushHour game;
+
+
+	public KeyInput(RushHour game)
 	{
 		this.game = game;
 		
