@@ -6,7 +6,9 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter
 {
 	Main game;
+	//Onur
 	//Classin adini main koymana izin veriyor mu ? 
+	//Public void static main(String Args[] ) ile constructor birbirine giriyor diye biliyordum ben
 	public KeyInput(Main game)
 	{
 		this.game = game;
